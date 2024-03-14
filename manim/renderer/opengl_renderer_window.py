@@ -38,10 +38,16 @@ class Window(PygletWindow):
         else:
             size = tuple(size)
 
-        super().__init__(size=size)
+        # super().__init__(size=size)
+        print(size)
+        assert size[0] == 1920 and size[1] == 1080
+        super().__init__(fullscreen=True)
 
         self.title = f"Manim Community {__version__}"
-        self.size = size
+        # self.size = size
+        print(self.size)
+        if self.size[0] != 1920 or self.size[1] != 1080:
+            print('[WARNING] size is not 1920x1080')
         self.renderer = renderer
 
         mglw.activate_context(window=self)
